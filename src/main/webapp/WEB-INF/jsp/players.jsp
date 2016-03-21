@@ -8,9 +8,13 @@
     <body>
         <div class="container">
             <jsp:include page="header.jsp"/>
-            
-            
-            
+                <table>
+                    <c:forEach var="player" items="${players}">
+                        <tr>
+                            <td><c:out value="${player}"/></td>
+                        </tr>
+                    </c:forEach>
+                </table>
             <jsp:include page="footer.jsp"/>
         </div>
     </body>
