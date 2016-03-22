@@ -8,13 +8,24 @@
     <body>
         <div class="container">
             <jsp:include page="header.jsp"/>
-                <table>
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Family name</th>
+                    </tr>
                     <c:forEach var="player" items="${players}">
                         <tr>
-                            <td><c:out value="${player}"/></td>
+                            <td><c:out value="${player.username}"/></td>
+                            <td><c:out value="${player.name}"/></td>
+                            <td><c:out value="${player.familyName}"/></td>
+                            <td><a href="<c:url value="/players/${player.username}.htm"/>"><span class="glyphicon glyphicon-pencil"></span></a></td>
                         </tr>
                     </c:forEach>
                 </table>
+                <form method="GET" action="<c:url value="/players/new.htm"/>">
+                    <input type="submit" value="New" class="btn btn-primary "/>
+                </form>
             <jsp:include page="footer.jsp"/>
         </div>
     </body>
