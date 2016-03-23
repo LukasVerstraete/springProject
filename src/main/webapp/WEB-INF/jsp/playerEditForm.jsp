@@ -8,11 +8,8 @@
     <body>
         <div class="container">
             <jsp:include page="header.jsp"/>
-            <form method="POST" action="<c:url value="/players.htm"/>" role="form">
-                <p class="form-group">
-                    <label class="control-label" for="username">Username:</label>
-                    <input id="username" type="text" autocomplete="on" name="username" value="${player.username}" placeholder="Username"/>
-                </p>
+            <h3>Username: ${player.username}</h3>
+            <form method="POST" action="<c:url value="/players/update.htm"/>" role="form">
                 <p class="form-group">
                     <label class="control-label" for="name">Name:</label>
                     <input id="name" type="text" autocomplete="on" name="name" value="${player.name}" placeholder="Name"/>

@@ -13,6 +13,7 @@
                         <th>Username</th>
                         <th>Name</th>
                         <th>Family name</th>
+                        <th></th>
                     </tr>
                     <c:forEach var="player" items="${players}">
                         <tr>
