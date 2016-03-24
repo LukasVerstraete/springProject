@@ -33,20 +33,20 @@ public class PlayerController {
     @RequestMapping(value="/create", method = RequestMethod.POST)
     public String create(@ModelAttribute ("player") Player player)
     {
-        playerService.addPlayer(player);
+        playerService.add(player);
         return "redirect:/players.htm";
     }
     
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
     public ModelAndView getEditForm(@PathVariable String username)
     {
-        return new ModelAndView("playerEditForm", "player", playerService.getPlayer(username));
+        return new ModelAndView("playerEditForm", "player", playerService.get(username));
     }
     
     @RequestMapping(value="/update", method = RequestMethod.POST)
     public String update(@ModelAttribute ("player") Player player)
     {
-        playerService.updatePlayer(player);
+        playerService.update(player);
         return "redirect:/players.htm";
     }
 }
