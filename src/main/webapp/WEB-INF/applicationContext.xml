@@ -9,9 +9,15 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-    <bean id="playerService" class="services.PlayerService">
+    <bean id="playerService" class="services.player.PlayerService">
         <constructor-arg>
-            <value>memory</value>
+            <value type="util.MemoryLocation">REMOTE</value>
+        </constructor-arg>
+    </bean>
+    
+    <bean id="roomService" class="services.room.RoomService">
+        <constructor-arg>
+            <value type="util.MemoryLocation">REMOTE</value>
         </constructor-arg>
     </bean>
     

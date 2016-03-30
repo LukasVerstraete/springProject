@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html> 
 <html>
     <jsp:include page="head.jsp">
@@ -10,9 +11,9 @@
             <jsp:include page="header.jsp"/>
                 <table class="table table-hover table-striped">
                     <tr>
-                        <th>Username</th>
-                        <th>Name</th>
-                        <th>Family name</th>
+                        <th><spring:message code="label.username"/></th>
+                        <th><spring:message code="label.firstName"/></th>
+                        <th><spring:message code="label.name"/></th>
                         <th></th>
                     </tr>
                     <c:forEach var="player" items="${players}">

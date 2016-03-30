@@ -31,20 +31,20 @@ public class PlayerController {
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView getNewForm()
     {
-        return new ModelAndView("playerCreateForm", "player", new Player("Leen", "Leen", "Peeters"));
+        return new ModelAndView("playerCreateForm", "player", new Player());
     }
     
     @RequestMapping(value="/create", method = RequestMethod.POST)
     public String create(@ModelAttribute ("player") Player player, BindingResult result)
     {
-        try 
-        {
+//        try 
+//        {
             playerService.add(player);
-        }
-        catch(Exception e)
-        {
-            result.addError(new ObjectError("username", e.getMessage()));
-        }
+//        }
+//        catch(Exception e)
+//        {
+//            result.addError(new ObjectError("username", e.getMessage()));
+//        }
         if(result.hasErrors()) {
             for(ObjectError e : result.getAllErrors())
             {

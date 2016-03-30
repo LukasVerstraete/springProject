@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html> 
 <html>
     <jsp:include page="head.jsp">
@@ -12,17 +13,17 @@
             
             <form:form commandName="player" method="POST" action="create.htm">
                 <p class="form-group">
-                    <label class="control-label" for="username">Username:</label>
+                    <label class="control-label" for="username"><spring:message code="label.username"/>:</label>
                     <form:input id="username" path="username"/>
                     <form:errors path="username"/>
                 </p>
                 <p class="form-group">
-                    <label class="control-label" for="name">Name:</label>
+                    <label class="control-label" for="name"><spring:message code="label.firstName"/>:</label>
                     <form:input id="name" path="name"/>
                     <form:errors path="name"/>
                 </p>
                 <p class="form-group">
-                    <label class="control-label" for="family-name">Family name:</label>
+                    <label class="control-label" for="family-name"><spring:message code="label.name"/></label>
                     <form:input id="family-name" path="familyName"/>
                     <form:errors path="familyName" element="span"/>
                 </p>
