@@ -69,4 +69,11 @@ public class PlayerController {
         playerService.update(player);
         return "redirect:/players.htm";
     }
+    
+    @RequestMapping(value="delete/{username}", method=RequestMethod.DELETE)
+    public String delete(@PathVariable String username)
+    {
+        playerService.delete(playerService.get(username));
+        return "redirect:/players.htm";
+    }
 }

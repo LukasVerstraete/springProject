@@ -21,7 +21,12 @@
                             <td><c:out value="${player.username}"/></td>
                             <td><c:out value="${player.name}"/></td>
                             <td><c:out value="${player.familyName}"/></td>
-                            <td><a href="<c:url value="/players/${player.username}.htm"/>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                            <td>
+                                <a href="<c:url value="/players/${player.username}.htm"/>"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <form method="DELETE" action="<c:url value="/players/delete/${player.username}.htm"/>">
+                                    <button type="submit"><span class=" glyphicon glyphicon-trash"></span></button>
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>

@@ -9,13 +9,13 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-    <bean id="playerService" class="services.player.PlayerService">
+    <bean id="playerService" class="services.player.PlayerService" destroy-method="closeConnection">
         <constructor-arg>
             <value type="util.MemoryLocation">REMOTE</value>
         </constructor-arg>
     </bean>
     
-    <bean id="roomService" class="services.room.RoomService">
+    <bean id="roomService" class="services.room.RoomService" destroy-method="closeConnection">
         <constructor-arg>
             <value type="util.MemoryLocation">REMOTE</value>
         </constructor-arg>
