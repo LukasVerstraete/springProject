@@ -14,11 +14,9 @@
             <value type="util.MemoryLocation">REMOTE</value>
         </constructor-arg>
     </bean>
-    
     <bean id="roomService" class="services.room.RoomService" destroy-method="closeConnection">
         <constructor-arg>
             <value type="util.MemoryLocation">REMOTE</value>
         </constructor-arg>
     </bean>
-    
 </beans>

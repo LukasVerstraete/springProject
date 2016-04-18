@@ -13,12 +13,22 @@
                         <th>Room name</th>
                         <th>Games hosted</th>
                         <th></th>
+                        <th></th>
                     </tr>
                     <c:forEach var="room" items="${rooms}">
                         <tr>
                             <td><c:out value="${room.name}"/></td>
                             <td><c:out value="${room.gamesHosted}"/></td>
-                            <td><a href="<c:url value="/rooms/${room.name}.htm"/>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                            <td>
+                                <a href="<c:url value="/rooms/${room.name}.htm"/>">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                            </td>
+                            <td>
+                                <form method="POST" action="<c:url value="/rooms/delete/${room.name}.htm"/>">
+                                    <button type="submit"><span class=" glyphicon glyphicon-trash"></span></button>
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>

@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-import services.Service;
+import services.WiezenFacade;
+import services.player.PlayerService;
 
 
 @Controller
@@ -20,7 +21,8 @@ import services.Service;
 public class PlayerController {
     
     @Autowired
-    private Service playerService;
+    public PlayerService playerService;
+
     
     @RequestMapping(method=RequestMethod.GET)
     public ModelAndView getPlayers()
@@ -70,7 +72,7 @@ public class PlayerController {
         return "redirect:/players.htm";
     }
     
-    @RequestMapping(value="delete/{username}", method=RequestMethod.DELETE)
+    @RequestMapping(value="/delete/{username}", method=RequestMethod.POST)
     public String delete(@PathVariable String username)
     {
         playerService.delete(playerService.get(username));

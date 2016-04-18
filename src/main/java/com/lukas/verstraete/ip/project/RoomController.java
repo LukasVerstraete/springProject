@@ -4,14 +4,14 @@ import domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-import services.Service;
+import services.WiezenFacade;
+import services.room.RoomService;
 
 
 @Controller
@@ -20,7 +20,7 @@ import services.Service;
 public class RoomController {
     
     @Autowired
-    public Service roomService;
+    public RoomService roomService;
     
     @RequestMapping(method=RequestMethod.GET)
     public ModelAndView getRooms()
@@ -65,4 +65,10 @@ public class RoomController {
         return "redirect:/rooms.htm";
     }
     
+    @RequestMapping(value="/delete/{name}", method=RequestMethod.POST)
+    public String delete(@PathVariable String name)
+    {
+        roomService.delete(roomService.get(name));
+        return "redirect:/rooms.htm";
+    }
 }

@@ -15,6 +15,7 @@
                         <th><spring:message code="label.firstName"/></th>
                         <th><spring:message code="label.name"/></th>
                         <th></th>
+                        <th></th>
                     </tr>
                     <c:forEach var="player" items="${players}">
                         <tr>
@@ -23,7 +24,9 @@
                             <td><c:out value="${player.familyName}"/></td>
                             <td>
                                 <a href="<c:url value="/players/${player.username}.htm"/>"><span class="glyphicon glyphicon-pencil"></span></a>
-                                <form method="DELETE" action="<c:url value="/players/delete/${player.username}.htm"/>">
+                            </td>
+                            <td>
+                                <form method="POST" action="<c:url value="/players/delete/${player.username}.htm"/>">
                                     <button type="submit"><span class=" glyphicon glyphicon-trash"></span></button>
                                 </form>
                             </td>
