@@ -4,13 +4,13 @@ import domain.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-import services.WiezenFacade;
 import services.room.RoomService;
 
 
@@ -35,16 +35,16 @@ public class RoomController {
     }
     
     @RequestMapping(value="/create", method = RequestMethod.POST)
-    public String create(@ModelAttribute ("room") Room room, BindingResult result)
+    public String create(@Validated @ModelAttribute ("room") Room room, BindingResult result)
     {
-//        try 
-//        {
+        try 
+        {
             roomService.add(room);
-//        }
-//        catch(Exception e)
-//        {
-//            result.addError(new ObjectError("name", e.getMessage()));
-//        }
+        }
+        catch(Exception e)
+        {
+            System.err.println(e.getMessage());
+        }
         if(result.hasErrors())
             return "roomCreateForm";
         return "redirect:/rooms.htm";
@@ -57,7 +57,7 @@ public class RoomController {
     }
     
     @RequestMapping(value="/update", method = RequestMethod.POST)
-    public String update(@ModelAttribute ("updateRoom") Room room, BindingResult result)
+    public String update(@Validated @ModelAttribute ("updateRoom") Room room, BindingResult result)
     {
         if(result.hasErrors())
             return "roomEditForm";
